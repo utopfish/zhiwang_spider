@@ -3,10 +3,11 @@
 #@contact:utopfish@163.com
 #@file:spider_main.py
 #@time: 2019/9/4 0:45
-
+import os
 import time
 import json
 from check import *
+from config import cf
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -42,8 +43,7 @@ def init(type,kw):
     time.sleep(5)
 
 
-# 缺少paperid
-def get_list(num,classification):
+def get_list(num,savePath,classification):
     '''
     论文内容下载
     :param num:
@@ -83,8 +83,7 @@ def get_list(num,classification):
             data['language']=""
             data['type']=""
             data['attach']=""
-            a = element.find_element_by_xpath('td/a[@class="fz14"]')
-            paper_info = element.text.replace('\n', ' ').split(' ')
+
             info=element.find_elements_by_css_selector("td")
             data['title']=info[1].text
             data['author']=info[2].text
@@ -92,6 +91,8 @@ def get_list(num,classification):
             data['publish_date']=info[4].text
             data['publish_year']=info[4].text.split("-")[0]
             data['type']=info[5].text
+
+            a = element.find_element_by_xpath('td/a[@class="fz14"]')
             a.click()
 
 
@@ -103,6 +104,7 @@ def get_list(num,classification):
                 data['language']="中文"
             else:
                 data['language']="english"
+
             print("================================开始================")
             try:
                 origaniztion=driver.find_element_by_css_selector(".orgn > span:nth-child(1) > a:nth-child(1)").text
@@ -165,13 +167,13 @@ def get_list(num,classification):
                     name = data['author']
                 data['attach'] = data['title'] + name + ".pdf"
             except NOTUSABLEEXCEPTION as e:
-                e.msg = 'caj下载失败'
+                e.msg = 'pdf下载失败'
                 raise e
             ActionChains(driver).move_to_element(sub_btn).click(sub_btn).perform()
         except Exception as arg:
             print(arg)
         try:
-            with open("record.json", "a+") as f:
+            with open(os.path.join(savePath,"record.json"), "a+") as f:
                 json.dump(data, f)
                 f.write('\n')
                 print("加载入文件完成...")
@@ -196,14 +198,15 @@ if __name__ == "__main__":
     
 '''
     options = webdriver.ChromeOptions()
-    #论文保存路径
-    savePath="H:\paperPath"
+    # options.add_argument('--headless')
+    paperSavePath=cf['paperPath']
+    recordSavePath=cf['record']
     prefs = {
         'profile.default_content_setting_values':
             {
                 'notifications': 2
             },
-        'download.default_directory': savePath
+        'download.default_directory': paperSavePath
     }
     options.add_experimental_option('prefs', prefs)
     driver = webdriver.Chrome(chrome_options=options)
@@ -220,7 +223,7 @@ if __name__ == "__main__":
 
     while (now_page < 100):
         try:
-            num = get_list(num,"载人航天")
+            num = get_list(num,recordSavePath,"载人航天")
         except Exception as e:
             print(e)
         a_list = driver.find_elements_by_xpath('//div[@class="TitleLeftCell"]//a')
