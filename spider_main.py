@@ -24,11 +24,13 @@ def is_Chinese(word):
     return False
 
 
+
+
 def init(type,kw):
     '''
     输入搜索类型与关键字
     :param type: (str)论文类型(期刊或会议)
-    :param kw: (str)关键字
+    :param kw: (str)关键字   ssss
     :return:
     '''
     driver.get('http://kns.cnki.net/kns/brief/default_result.aspx')
