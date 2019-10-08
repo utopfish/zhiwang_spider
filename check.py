@@ -3,11 +3,12 @@
 #@contact:utopfish@163.com
 #@file:check.py
 #@time: 2019/9/3 23:54
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
-from exceptions_spider import NOTUSABLEEXCEPTION
-from selenium.common.exceptions import TimeoutException
 from selenium import webdriver
+from exceptions_spider import NOTUSABLEEXCEPTION
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support import expected_conditions as EC
+
 
 def check_visible(driver:webdriver, target:tuple, timeout=10):
     """

@@ -3,11 +3,12 @@
 # @contact:utopfish@163.com
 # @file:json2excel.py
 # @time: 2019/9/28 23:46
+import os
 import json
 import xlwt
+from config import cf
 
-
-def save_to_excel(path):
+def save_to_excel(path,savePath):
     try:
         workbook = xlwt.Workbook(encoding='utf-8')
         sheet = workbook.add_sheet('期刊论文')
@@ -56,12 +57,12 @@ def save_to_excel(path):
             sheet.write(i, 27, data['attach'])
 
             i += 1
-        workbook.save('tb_pt.xls')
+        workbook.save(savePath)
         print('写入excel成功')
     except Exception:
         print('写入excel失败')
 if __name__=="__main__":
     #文件名
-    path="record.json"
-
-    save_to_excel(path)
+    path=os.path.join(cf['record'],"record.json")
+    savePath=os.path.join(cf['record'],"tb_pt.xls")
+    save_to_excel(path,savePath)

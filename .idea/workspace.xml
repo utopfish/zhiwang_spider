@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="b95e2b0d-59be-44ab-8b91-6b30af37170f" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
@@ -168,10 +169,18 @@
       </pane>
       <pane id="Scope" />
     </panes>
+=======
+  <component name="ProjectFrameBounds">
+    <option name="x" value="159" />
+    <option name="y" value="136" />
+    <option name="width" value="1842" />
+    <option name="height" value="1002" />
+>>>>>>> f5932418264abd9fb1a45afa0eb7975c6526524c
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+<<<<<<< HEAD
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -315,5 +324,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> f5932418264abd9fb1a45afa0eb7975c6526524c
   </component>
 </project>
