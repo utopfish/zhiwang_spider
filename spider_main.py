@@ -279,8 +279,8 @@ if __name__ == "__main__":
     
 '''
 
-    part=6
-    no=0
+    part=10#将全部内容分为10份
+    no=0#第一份
     log=[]
     if os.path.exists("log.json") != True:
         init_record()
@@ -302,7 +302,6 @@ if __name__ == "__main__":
                 except:
                     robot.close()
                     continue
-
                 robot.get_list(log,number,log[number]["cate"])
                 sign=robot.next_page()
                 t=log[number]
@@ -315,49 +314,4 @@ if __name__ == "__main__":
                 robot.close()
                 if sign==False:
                     log[number]['stop']=True
-
-    # options = webdriver.ChromeOptions()
-    # # options.add_argument('--headless')
-    # paperSavePath=cf['paperPath']
-    # recordSavePath=cf['record']
-    # prefs = {
-    #     'profile.default_content_setting_values':
-    #         {
-    #             'notifications': 2
-    #         },
-    #     'download.default_directory': paperSavePath
-    # }
-    # options.add_experimental_option('prefs', prefs)
-    # driver = webdriver.Chrome(chrome_options=options)
-    # init("期刊论文","载人航天")
-    #
-    # page = 2
-    # row = 2
-    #
-    # #切换到一个能读取内容的页面
-    # #出现的bug，页面切换之后能获取的论文少了很多，而且超过一定时间不能持续访问
-    # #修改下列数据中的参数能解决论文少的一部分问题，里面年份可以设置
-    # driver.get(
-    #     'http://kns.cnki.net/kns/brief/brief.aspx?ctl=4a7fde68-1a44-4852-8b23-1a70aeb4cf8b&dest=%E5%88%86%E7%BB%84%EF%BC%9A%E5%8F%91%E8%A1%A8%E5%B9%B4%E5%BA%A6%20%E6%98%AF%202018&action=5&dbPrefix=SCDB&PageName=ASP.brief_default_result_aspx&Param=%e5%b9%b4+%3d+%272018%27&SortType=(FFD%2c%27RANK%27)+desc&ShowHistory=1&isinEn=1')
-    #
-    # while (page < 100):
-    #     for i in range(page-1):
-    #         a_list = driver.find_elements_by_xpath('//div[@class="TitleLeftCell"]//a')
-    #         for a in a_list:
-    #             if (a.text == '下一页'):
-    #                 a.click()
-    #                 break
-    #         page = page + 1
-    #     try:
-    #         # check_visible(driver, (By.CLASS_NAME, "GridTableConte"), 10)
-    #         row = get_list(row,recordSavePath,"载人航天")
-    #     except Exception as e:
-    #         print(e)
-    #     a_list = driver.find_elements_by_xpath('//div[@class="TitleLeftCell"]//a')
-    #     for a in a_list:
-    #         if (a.text == '下一页'):
-    #             a.click()
-    #             break
-    #     page = page + 1
-    #     time.sleep(10)
 
