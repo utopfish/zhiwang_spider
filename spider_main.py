@@ -53,6 +53,7 @@ class zhiwang_spider():
         '''
         self.driver.get(
             'http://kns.cnki.net/kns/brief/brief.aspx?ctl=4a7fde68-1a44-4852-8b23-1a70aeb4cf8b&dest=%E5%88%86%E7%BB%84%EF%BC%9A%E5%8F%91%E8%A1%A8%E5%B9%B4%E5%BA%A6%20%E6%98%AF%20{}&action=5&dbPrefix=SCDB&PageName=ASP.brief_default_result_aspx&Param=%e5%b9%b4+%3d+%27{}%27&SortType=(FFD%2c%27RANK%27)+desc&ShowHistory=1&isinEn=1'.format(year,year))
+        self.driver.find_element_by_css_selector('#id_grid_display_num > a:nth-child(3)').click()
     def click_page(self,page):
         '''
         点击到需要的页面
@@ -64,6 +65,7 @@ class zhiwang_spider():
             for a in a_list:
                 if (a.text == '下一页'):
                     a.click()
+                    time.sleep(2)
                     break
     def next_page(self):
         '''
@@ -280,7 +282,7 @@ if __name__ == "__main__":
 '''
 
     part=15#将全部内容分为10份
-    no=2#第一份
+    no=4#第一份
     log=[]
     if os.path.exists("log.json") != True:
         init_record()
