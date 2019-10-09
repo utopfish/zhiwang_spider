@@ -14,7 +14,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 class zhiwang_spider():
     def __init__(self):
         options = webdriver.ChromeOptions()
-        options.add_argument('--headless')
+        # options.add_argument('--headless')
         self.paperSavePath=cf['paperPath']
         self.recordSavePath=cf['record']
         prefs = {
@@ -279,8 +279,8 @@ if __name__ == "__main__":
     
 '''
 
-    part=10#将全部内容分为10份
-    no=0#第一份
+    part=15#将全部内容分为10份
+    no=2#第一份
     log=[]
     if os.path.exists("log.json") != True:
         init_record()
