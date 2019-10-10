@@ -66,7 +66,8 @@ class zhiwang_spider():
             for a in a_list:
                 if (a.text == '下一页'):
                     a.click()
-                    time.sleep(4)
+
+                    time.sleep(2)
                     break
     def next_page(self):
         '''
