@@ -131,6 +131,7 @@ class zhiwang_spider():
                 data['publish_date']=info[4].text
                 data['publish_year']=info[4].text.split("-")[0]
                 data['type']=info[5].text
+                data['basic_classification'] = classification
                 a = element.find_element_by_xpath('td/a[@class="fz14"]')
                 a.click()
 
@@ -194,7 +195,7 @@ class zhiwang_spider():
                     issn=self.driver.find_element_by_css_selector(".sourinfo > p:nth-child(4)").text
                     print("issn"+issn)
                     data['issn']=issn
-                    data['basic_classification']=classification
+
                 except:
                     pass
                 print("=======================结束===================================")
