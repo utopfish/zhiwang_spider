@@ -302,7 +302,7 @@ if __name__ == "__main__":
 '''
 
     part = 15  # 将全部内容分为15份
-    no = 0  # 第一份
+    no = 7  # 第一份
     log = []
     if os.path.exists("log.json") != True:
         init_record()
